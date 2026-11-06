@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101611" />
+  <title>Wisteria Watch — Demon Slayer Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Wisteria Watch home">
+        <span class="brand-mark"><span>藤</span></span>
+        <span class="brand-copy"><strong>WISTERIA WATCH</strong><small>DEMON SLAYER DEFENSE</small></span>
+      </a>
+      <div class="top-status"><span class="season-dot"></span> NIGHT 01 <i></i> MOUNT FUJI CASCADE</div>
+      <button class="icon-button" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </header>
+
+    <section class="intro-row">
+      <div><p class="eyebrow">THE CORPS NEEDS YOU</p><h1>Hold the <em>night.</em></h1><p class="subtitle">Build your squad. Master their breathing. Keep the demons from the village.</p></div>
+      <button class="guide-button" id="guideButton"><span>?</span> HOW TO PLAY</button>
+    </section>
+
+    <section class="game-layout">
+      <div class="battle-column">
+        <div class="battle-head">
+          <div class="battle-label"><span class="live-pip"></span><div><strong>THE WISTERIA PASS</strong><small id="phaseText">PREPARATION PHASE</small></div></div>
+          <div class="wave-progress"><span id="waveLabel">WAVE 1</span><div class="progress-track"><i id="waveProgress"></i></div><b id="waveCount">0 / 6</b></div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="battlefield" aria-label="Demon defense battlefield"></canvas>
+          <div class="canvas-tip hidden" id="canvasTip"><span class="tip-spark">✦</span> CHOOSE A GRASS TILE TO PLACE YOUR SLAYER</div>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <div class="wave-flash" id="waveFlash">WAVE CLEARED</div>
+        </div>
+        <div class="battle-footer">
+          <div class="village-health"><span class="heart-icon">♥</span><div><small>VILLAGE GATES</small><div class="health-track"><i id="healthBar"></i></div></div><b id="healthText">20 / 20</b></div>
+          <div class="enemy-legend"><span><i class="legend-demon"></i> DEMONS</span><span><i class="legend-path"></i> THEIR PATH</span></div>
+        </div>
+      </div>
+
+      <aside class="command-column">
+        <section class="resource-strip">
+          <div class="resource"><span class="resource-icon moon">◉</span><div><small>WISTERIA</small><b id="goldCount">5</b></div><em>+</em></div>
+          <div class="resource"><span class="resource-icon crystal">✦</span><div><small>BREATH</small><b id="breathCount">0</b></div></div>
+        </section>
+
+        <section class="draw-panel">
+          <div class="section-heading"><div><p class="eyebrow">CALL FOR AID</p><h2>Recruit a slayer</h2></div><span class="draw-count" id="drawCount">5 DRAWS</span></div>
+          <p class="panel-copy">Spend wisteria to draw a new slayer. Three identical slayers combine into a stronger rank.</p>
+          <button class="draw-button" id="drawButton"><span class="draw-symbol">✦</span><span><b>DRAW SLAYER</b><small>1 WISTERIA</small></span><kbd>SPACE</kbd></button>
+          <div class="draw-result" id="drawResult"></div>
+        </section>
+
+        <section class="squad-panel">
+          <div class="section-heading squad-heading"><div><p class="eyebrow">YOUR FORMATION</p><h2>Slayer roster <span id="unitCount">0</span></h2></div><button class="sort-button" id="sortButton" title="Sort roster">↕</button></div>
+          <div class="roster" id="roster"></div>
+          <div class="roster-empty" id="rosterEmpty"><span>✧</span><b>Your roster is waiting</b><small>Draw your first slayer to begin.</small></div>
+          <div class="merge-note"><span>✧</span> <b>TRIPLE MERGE</b> — Three of the same rank fuse automatically.</div>
+        </section>
+
+        <section class="round-panel">
+          <div class="round-meta"><span class="round-sigil">☾</span><div><small>NIGHTFALL IN</small><b id="roundStatus">Ready when you are</b></div><span class="next-wave">NEXT <b id="nextWave">01</b></span></div>
+          <button class="round-button" id="roundButton"><span>BEGIN WAVE</span><i>→</i></button>
+        </section>
+      </aside>
+    </section>
+    <footer class="site-footer"><span>藤 <b>THE CORPS HOLDS THE LINE</b></span><span>DEMON SLAYER DEFENSE <i>•</i> A FAN-MADE MINI GAME</span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="guideModal" aria-hidden="true"><section class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guideTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><p class="eyebrow">FIELD NOTES</p><h2 id="guideTitle">How to hold the pass</h2><ol><li><b>Recruit.</b> Draw slayers with wisteria. Each draw costs 1.</li><li><b>Position.</b> Select a roster card, then choose a grass tile beside the trail. They attack demons in range automatically.</li><li><b>Evolve.</b> Three copies of the same character and rank fuse into one stronger slayer — even if they're already deployed.</li><li><b>Survive.</b> Start each wave when you're ready. Demons that reach the gate cost you health. Clear waves to earn more wisteria.</li></ol><button class="modal-start" id="modalOkay">UNDERSTOOD <span>→</span></button></section></div>
+  <script src="game.js"></script>
+</body>
+</html>
